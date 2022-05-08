@@ -10,6 +10,7 @@
  */
 class Solution {
 public:
+
     int getDecimalValue(ListNode* head) {
         int ans = 0;
         while (head) {
@@ -19,3 +20,4 @@ public:
         return ans;
     }
 };
+
