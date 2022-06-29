@@ -1,21 +1,21 @@
 class Solution {
 public:
     int subarraysDivByK(vector<int>& nums, int k) {
-        //remainder ka hash banana hai
-        map<int,int> mp;
-        int currSum=0; 
-        int ans=0,x;
-        for(int i=0; i<nums.size();i++){
-            currSum+=nums[i];
-            if(x<0) currSum+=k;
-            x=currSum%k;
-            if(currSum==k) ans++;
-            if(mp.find(x)!=mp.end()){
-                ans+=mp[x];
-            }
-            mp[x]++;
+        //remainder-frequency ka hash banana hai
+        unordered_map<int,int>m;
+        int sum=0;
+        int count=0;
+        for(int i =0;i<nums.size();i++){
+            sum+=nums[i];
+            int rem = sum%k;
+            if(rem==0)count++;
+            if(rem<0)rem+=k;
+            if(m.find(rem)!=m.end()) count+=m[rem];
+               m[rem]++;
         }
-        return ans;
+       return count;
+    
+
     }
 };
 
